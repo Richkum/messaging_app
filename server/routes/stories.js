@@ -1,9 +1,9 @@
 import express from "express";
 import authMiddleware from "../middleware/authIndex.js";
-import { getParticularUser } from "../models/getUsers.js";
+import { addStory } from "../models/usersStories.js";
 
 const router = express.Router();
 
-router.get("/user-profile/:id", authMiddleware, getParticularUser);
+router.post("/add-stories", authMiddleware, addStory);
 
 export default router;

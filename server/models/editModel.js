@@ -41,21 +41,6 @@ const updateUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
-    // let profilePictureUrl = null;
-
-    // if (req.file) {
-    //   console.log("Uploading profile picture to Cloudinary");
-    //   try {
-    //     profilePictureUrl = await uploadImageToCloudinary(req.file.path);
-    //   } catch (uploadError) {
-    //     console.error("Error uploading to Cloudinary:", uploadError);
-    //     client.release();
-    //     return res
-    //       .status(500)
-    //       .json({ message: "Error uploading profile picture" });
-    //   }
-    // }
-
     const updateFields = [];
     const queryParams = [userId];
 
@@ -63,10 +48,6 @@ const updateUser = async (req, res) => {
       updateFields.push(`username = $${queryParams.length + 1}`);
       queryParams.push(username);
     }
-    // if (profilePictureUrl) {
-    //   updateFields.push(`profile_picture = $${queryParams.length + 1}`);
-    //   queryParams.push(profilePictureUrl);
-    // }
     if (bio) {
       updateFields.push(`bio = $${queryParams.length + 1}`);
       queryParams.push(bio);
